@@ -45,6 +45,7 @@ public class Frame2 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        penarikan1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -57,7 +58,6 @@ public class Frame2 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        penarikan1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -166,6 +166,16 @@ public class Frame2 extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 150, 280, 50);
 
+        penarikan1.setBackground(new java.awt.Color(255, 153, 153));
+        penarikan1.setText("PENARIKAN ");
+        penarikan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                penarikan1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(penarikan1);
+        penarikan1.setBounds(20, 220, 170, 30);
+
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setLayout(null);
 
@@ -232,16 +242,6 @@ public class Frame2 extends javax.swing.JFrame {
         getContentPane().add(jPanel10);
         jPanel10.setBounds(180, 330, 280, 50);
 
-        penarikan1.setBackground(new java.awt.Color(255, 153, 153));
-        penarikan1.setText("PENARIKAN ");
-        penarikan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                penarikan1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(penarikan1);
-        penarikan1.setBounds(20, 220, 170, 30);
-
         setBounds(0, 0, 514, 481);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -251,7 +251,6 @@ public class Frame2 extends javax.swing.JFrame {
     }//GEN-LAST:event_keluarActionPerformed
 
     private void infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoActionPerformed
-
         new Frame4().setVisible(true);   
         dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_infoActionPerformed

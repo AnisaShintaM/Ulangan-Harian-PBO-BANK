@@ -38,7 +38,6 @@ public class Frame6 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         inputansetor = new javax.swing.JTextField();
         nilai = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -74,11 +73,6 @@ public class Frame6 extends javax.swing.JFrame {
         jLabel3.setText("PENYETORAN");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(190, 220, 110, 20);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Jumlah Saldo Anda Saat Ini :");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 330, 180, 30);
         getContentPane().add(inputansetor);
         inputansetor.setBounds(260, 250, 200, 30);
         getContentPane().add(nilai);
@@ -87,7 +81,7 @@ public class Frame6 extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Apakah Anda ingin melakukan Transaksi Lainnya ?");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(100, 370, 310, 30);
+        jLabel6.setBounds(90, 340, 310, 30);
 
         ya.setBackground(new java.awt.Color(255, 0, 204));
         ya.setText("YA");
@@ -97,7 +91,7 @@ public class Frame6 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ya);
-        ya.setBounds(160, 410, 170, 30);
+        ya.setBounds(150, 380, 170, 30);
 
         keluar1.setBackground(new java.awt.Color(255, 0, 204));
         keluar1.setText("TIDAK");
@@ -107,7 +101,7 @@ public class Frame6 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(keluar1);
-        keluar1.setBounds(160, 450, 170, 30);
+        keluar1.setBounds(150, 420, 170, 30);
 
         buttonyasetor.setText("YA");
         buttonyasetor.addActionListener(new java.awt.event.ActionListener() {
@@ -158,34 +152,32 @@ public class Frame6 extends javax.swing.JFrame {
     }//GEN-LAST:event_yaActionPerformed
 
     private void keluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluar1ActionPerformed
+        new Framee1().setVisible(true); 
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_keluar1ActionPerformed
 
     private void buttonyasetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonyasetorActionPerformed
-      
+        String tarikan = penarikan.getText();
         String setor = inputansetor.getText();
         String saldolast = nilai.getText();
-        nilai.setText(""+saldolast);
+        int saldo = 150000;
+        int jmltarik = Integer.parseInt(tarikan);
         int jmlsetor = Integer.parseInt(setor);
-        int lastsaldo = Integer.parseInt(saldolast);
+        int lastsaldo = saldo-jmltarik;
         int total = lastsaldo+jmlsetor;
-        nilai.setText(""+total);
-        
-        if (s%100!=0)
+    
+        if (jmlsetor%100!=0)
             JOptionPane.showMessageDialog(null,
-                    "Mesin ATM BRI tidak menerima uang koin \nSilahkan ulangi kembali!",
+                    "Mesin ATM BNI tidak menerima uang koin \nSilahkan ulangi kembali!",
                     "Transaksi Gagal", 0);
-        else if (s<50000)
+        else if (jmlsetor<50000)
             JOptionPane.showMessageDialog(null,
                     "Besaran minimal setor tunai adalah Rp. 50000, 00", "ERROR",0);
-        else if (s>=50000){
-            saldo = bal+s;
+        else if (jmlsetor>=50000){
+            total = lastsaldo+jmlsetor;
             JOptionPane.showMessageDialog(null, 
-                    "Saldo Anda saat ini sebesar :" + saldo);
-            }  
-        
-        
-        // TODO add your handling code here:
+                    "Saldo Anda saat ini sebesar :" +total);
+            } 
     }//GEN-LAST:event_buttonyasetorActionPerformed
 
     private void oktarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oktarikActionPerformed
@@ -193,24 +185,26 @@ public class Frame6 extends javax.swing.JFrame {
         int saldo = 150000;
         int jmltarik = Integer.parseInt(tarikan);
         int total = saldo-jmltarik;
-        nilai.setText(""+total);
+        //nilai.setText(""+total);
+        //nilai.setText(""+total);
         
-        if (t%100!=0)
+        if (jmltarik%100!=0)
             JOptionPane.showMessageDialog(null, "Mesin ATM ini tidak menerima uang koin \nSilahkan ulangi lagi", "Transaksi Gagal", 0);
         else{
-            if(t>tab)
+            if(jmltarik>saldo)
                 JOptionPane.showMessageDialog(null,"Saldo Anda tidak mencukupi \nSilahkan lakukan penyetoran","Transaksi Gagal", 0);
-            else if(t<50000)
+            else if(jmltarik<50000)
                 JOptionPane.showMessageDialog(null,
                     "Besaran minimal pengambilan tunai adalah Rp. 50000, 00", "Transaksi Gagal",0);
             else{
-                saldo = tab-t;
-                JOptionPane.showMessageDialog(null,"Saldo Anda saat ini sebesar :"+saldo);
-                if(tab<=50000)
-                    JOptionPane.showMessageDialog(null,"Saldo minimal Rp. 50000,00 Segera lakukan penyetoran untuk menghindari penutupan akun.","CAUTION",2);
+              total = saldo-jmltarik;
+              JOptionPane.showMessageDialog(null,"Saldo Anda saat ini sebesar :"+total);
+              if(jmltarik<=50000)
+              JOptionPane.showMessageDialog(null,"Saldo minimal Rp.50000,00 Segera lakukan penyetoran untuk menghindari penutupan akun."
+                            ,"CAUTION",2);
             }
         }
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_oktarikActionPerformed
 
     /**
@@ -256,7 +250,6 @@ public class Frame6 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

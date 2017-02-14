@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +12,8 @@
  * @author user
  */
 public class Framee3 extends javax.swing.JFrame {
+        int counter=0,a=3;
+        
 
     /**
      * Creates new form Frame3
@@ -101,12 +106,20 @@ public class Framee3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         if(passwd.getText().trim().equals("1234")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Selamat Datang");
             new Frame2().setVisible(true);
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(null, "Maaf PIN yang anda masukan salah, Coba Lagi");
-        } this.dispose();        
-        // TODO add your handling code here:
+        }else if(counter<3){
+            a--;
+            JOptionPane.showMessageDialog(null,"Pin Salah !\nPastikan PIN yang anda masukkan benar","ERROR",0);
+            JOptionPane.showMessageDialog(null,"\nKesempatan login " + a + " kali lagi" + "\n");
+        } else { JOptionPane.showMessageDialog(null,"Untuk bantuan nasabah,\nsilahkan menghubungi call center 555123 (Gratis)",
+                "Kartu ATM anda diblokir!",0);
+                        System.exit(0);    
+        }
+            
+        this.dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
